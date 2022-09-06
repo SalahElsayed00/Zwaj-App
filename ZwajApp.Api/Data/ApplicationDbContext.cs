@@ -6,11 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using ZwajApp.Api.Models;
 
 namespace ZwajApp.Api.Data
-{
+{ 
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        public DbSet<Value> Values { get; set; }
-
+        public DbSet<User> Users { get; set; }
     }
 }

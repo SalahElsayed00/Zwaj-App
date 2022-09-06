@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace ZwajApp.Api.Models
 {
-    public class Value
+    public class User
     {
         public int Id { get; set; }
-        public string name { get; set; }     
+        public string UserName { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+
     }
 }
