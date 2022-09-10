@@ -1,10 +1,11 @@
+import { AuthService } from './services/Auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [	
@@ -17,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,8 +16,22 @@ font-family: 'Cairo', sans-serif;font-size:2.25rem;font-weight:bolder" class="na
     <li class="nav-item">
       <a class="nav-link" href="#">دردشة</a>
     </li>
+    <li class="nav-item" *ngIf="loggedin()" (click)="logout()">
+      <a class="nav-link" >تسجيل الخروج</a>
+    </li>
   </ul>
-  <form #loginform="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="post()">
+  <div  *ngIf="loggedin()" class=" nav-link text-ligth" style="font-weight:bold;font-family: 'Almarai', sans-serif;font-size:1.2rem" class="navbar-brand">
+    <a class="nav-link text-ligth dropdown-toggle">
+      مرحبا بك
+    </a>
+  
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" >ملفك الشخصي</a>
+      <a class="dropdown-item" >تسجيل الخروج</a>
+
+    </div>
+  </div>
+  <form *ngIf="!loggedin()" #loginform="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
     <input #username="ngModel" class="form-control mr-sm-2" type="text" placeholder="إسم المشترك" name="username" name="username" [(ngModel)]="model.username" required>
     <input #password="ngModel" class="form-control mr-sm-2" type="password" placeholder="كلمة السر" name="password" [(ngModel)]="model.password" required>
     <button [disabled]="loginform.invalid" style="font-weight:bold;font-family: 'Cairo', sans-serif;font-size:1.0rem" class="btn btn-secondary my-2 my-sm-0"
