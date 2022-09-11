@@ -1,0 +1,18 @@
+<div  class="rtl container mt-5">
+  <div *ngIf="!registerMode" style="text-align: center ">
+    <h2 style="font-weight: bold;" class="mb-4">زواج يأتي لك بشريكك في الحياة</h2>
+    <h5 class="mb-3">تخيل حياتك مع توأم روحك. مع زواج، أنت الآن على بعد خطوة من تحقيق حلمك</h5>
+    <div class="text-center">
+      <button (click)="registerToggle()" class="btn btn-outline-warning btn-lg">إشترك معنا</button>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register></app-register>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //*ngIf="!registerMode" (click)="registerToggle()" *ngIf="registerMode" -->

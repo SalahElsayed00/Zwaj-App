@@ -1,7 +1,7 @@
 .nav-link:hover,
 .nav-link:focus {
     text-decoration: none;
-    color: #F4BB44 !important;
+    color: #ffc107 !important;
 }
 
 .nav-link {
@@ -11,7 +11,7 @@
 .btn-secondary:hover {
     text-decoration: none;
     color: black !important;
-    background: #F4BB44 !important;
+    background: #ffc107 !important;
 }
 
 

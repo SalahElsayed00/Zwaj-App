@@ -1,0 +1,16 @@
+<form #registerForm="ngForm" (ngSubmit)="register()" class="rtl">
+  <h4 style="font-weight: bold;" class="text-center text-dark">شريكك في الحياة بإنتظارك</h4>
+  <hr>
+
+  <div class="form-group">
+    <input name="username" [(ngModel)]="model.username" type="text" class="form-control" placeholder="إسم المشترك">
+  </div>
+  <div class="form-group">
+    <input name="password" [(ngModel)]="model.password" type="password" class="form-control" placeholder="كلمة السر">
+  </div>
+
+  <div class="form-group text-center">
+    <button class="btn btn-outline-warning btn-lg" type="submit">إشتراك</button>
+    <button (click)="cancel()" class="btn btn-outline-secondary btn-lg ml-2" type="button">ليس الأن</button>
+  </div>
+</form>

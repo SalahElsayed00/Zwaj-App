@@ -11,7 +11,7 @@ namespace ZwajApp.Api.DTOs
         [Required]
         public string UserName { get; set; }
         [Required]
-        [StringLength(maximumLength:4,MinimumLength =2,ErrorMessage ="password invalid")]
+        //[StringLength(maximumLength:4,MinimumLength =2,ErrorMessage ="password invalid")]
         public string Password { get; set; }
     }
 }

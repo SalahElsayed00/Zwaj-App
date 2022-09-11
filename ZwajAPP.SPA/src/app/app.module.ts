@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
+import { HomeComponent } from './components/nav/home/home.component';
+import { RegisterComponent } from './components/nav/register/register.component';
 
 @NgModule({
   declarations: [	
     AppComponent,
-      NavComponent
+      NavComponent,
+      HomeComponent,
+      RegisterComponent
    ],
   imports: [
     BrowserModule,
