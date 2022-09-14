@@ -30,6 +30,7 @@ namespace ZwajApp.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto user)
         {
+            
             user.UserName = user.UserName.ToLower();
             if (await _repo.UserExists(user.UserName))
                 return BadRequest("this username is already exist");
@@ -45,6 +46,7 @@ namespace ZwajApp.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto user)
         {
+            
             var userFromRepo = await _repo.Login(user.UserName.ToLower(), user.Password);
             if (userFromRepo == null) return Unauthorized();
 
