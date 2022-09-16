@@ -30,10 +30,10 @@ namespace ZwajApp.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto user)
         {
-            
+               
             user.UserName = user.UserName.ToLower();
             if (await _repo.UserExists(user.UserName))
-                return BadRequest("this username is already exist");
+                return BadRequest("هذا المستخدم مسجل من قبل");
 
             var userToCreate = new User()
             {

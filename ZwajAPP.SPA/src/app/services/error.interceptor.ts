@@ -1,5 +1,3 @@
-
-
 import { Injectable } from "@angular/core";
 import { HttpInterceptor, HttpHandler, HttpEvent, HttpRequest, HttpErrorResponse, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
@@ -29,11 +27,11 @@ export class ErrorInterceptor implements HttpInterceptor{
                     }
                     //Unauthorized errors
                     if(error.status===401){
-                        console.log(error.statusText);
+                        //console.log(error.statusText);
                         return throwError(()=>error.statusText);
                     }
 
-                    //return throwError(()=>{modelStateErrors || serverError || 'Server Error'});
+                    return throwError(()=>{modelStateErrors || serverError || 'Server Error'});
                 }
                 return throwError(()=>{});
 
@@ -47,3 +45,6 @@ export const ErrorInterceptorProvidor={
     useClass:ErrorInterceptor,
     multi:true
 }
+
+
+

@@ -1,19 +1,8 @@
 .nav-link:hover,
 .nav-link:focus {
     text-decoration: none;
-    color: #ffc107 !important;
+    color: #fff !important;
 }
-
-.nav-link {
-    color: white !important;
-}
-
-.btn-secondary:hover {
-    text-decoration: none;
-    color: black !important;
-    background: #ffc107 !important;
-}
-
 
 .ng-touched:not(form) {
     border: 2px solid #c2181e;

@@ -1,9 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+/* Bootstrap */
 @import"../node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.css";
+
+/* bootswatch */
+@import "../node_modules/bootswatch/dist/darkly/bootstrap.min.css";
+/* Fontawesome */
 @import"../node_modules/font-awesome/css/font-awesome.min.css";
+
+/* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400&family=El+Messiri&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300&display=swap');
 
+/* alertifyjs */
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import"../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+
 * { 
     font-family: 'Cairo', sans-serif;
+  }
+  a {
+    cursor: pointer;
   }
