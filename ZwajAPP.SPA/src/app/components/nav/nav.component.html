@@ -1,46 +1,44 @@
 <nav class="rtl navbar navbar-expand-lg navbar-dark bg-primary">
-  <a style="margin-top:-10px;color:#FFF;
-font-family: 'Cairo', sans-serif;font-size:2.25rem;font-weight:bolder" class="navbar-brand" href="#"><i
-      class="fa fa-heart" aria-hidden="true"></i>زواج<i class="fa fa-heart" aria-hidden="true"></i></a>
+  <a class="navbar-brand" routerLink="/"><i class="fa fa-heart" aria-hidden="true"></i>زواج<i class="fa fa-heart"
+      aria-hidden="true"></i></a>
 
-  <ul *ngIf="loggedin()" style="letter-spacing:1px;font-weight:bold;font-family: 'Almarai', sans-serif;font-size:1.2rem"
-    class="navbar-nav mr-auto">
+  <ul *ngIf="loggedin()" class="navbar-nav mr-auto">
     <li class="nav-item">
-      <a class="nav-link" href="#">الرئيسية </a>
+      <a class="nav-link" routerLink="/">الرئيسية </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">بحث</a>
+      <a class="nav-link" routerLink="/members">بحث</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">تواصل</a>
+      <a class="nav-link" routerLink="/like">تواصل</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">دردشة</a>
+      <a class="nav-link" routerLink="messages">دردشة</a>
     </li>
   </ul>
-  <div dropdown  *ngIf="loggedin()" class="nav-link text-ligth"
-    style="font-weight:bold;font-family: 'Almarai', sans-serif;font-size:1.2rem" class="navbar-brand">
+  <div dropdown *ngIf="loggedin()" class="nav-link text-ligth mr-3"
+    style="font-weight:bold;font-family: 'Almarai', sans-serif;font-size:1.2rem;margin-left: 15px;"
+    class="navbar-brand">
     <a dropdownToggle class="nav-link text-ligth dropdown-toggle">
       مرحبا بك
       {{authService.decodeToken.unique_name |titlecase}}
     </a>
 
-    <div class="dropdown-menu" *dropdownMenu  class="dropdown-menu">
+    <div class="dropdown-menu" *dropdownMenu class="dropdown-menu">
       <a class="dropdown-item"> <i class="fa fa-user" aria-hidden="true"></i>
-         ملفك الشخصي  
-        </a>
+        ملفك الشخصي
+      </a>
       <a class="dropdown-item" (click)="logout()"> <i class="fa fa-sign-out" aria-hidden="true"></i>
-         تسجيل الخروج
+        تسجيل الخروج
       </a>
     </div>
   </div>
-  <form *ngIf="!loggedin()" #loginform="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+  <form *ngIf="!loggedin()" #loginform="ngForm" class="form-inline my-2 my-lg-0 ml-5" (ngSubmit)="login()">
     <input #username="ngModel" class="form-control mr-sm-2" type="text" placeholder="إسم المشترك" name="username"
       name="username" [(ngModel)]="model.username" required>
     <input #password="ngModel" class="form-control mr-sm-2" type="password" placeholder="كلمة السر" name="password"
       [(ngModel)]="model.password" required>
-    <button [disabled]="loginform.invalid" style="font-weight:bold;font-family: 'Cairo', sans-serif;font-size:1.0rem"
-      class="btn btn-otline-light my-2 my-sm-0" type="submit">تفضل
+    <button [disabled]="loginform.invalid" class="btn btn-otline-light my-2 my-sm-0 btnsubmit" type="submit">تفضل
       بالدخول</button>
   </form>
 </nav>

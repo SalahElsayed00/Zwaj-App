@@ -1,7 +1,28 @@
+.navbar-brand {
+    margin-top: -10px;
+    color: #FFF;
+    font-family: 'Cairo', sans-serif;
+    font-size: 2.25rem;
+    font-weight: bolder
+}
+
+.navbar-nav {
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: 'Almarai', sans-serif;
+    font-size: 1.2rem
+}
+
 .nav-link:hover,
 .nav-link:focus {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: #fff !important;
+}
+
+.btnsubmit {
+    font-weight: bold;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.0rem
 }
 
 .ng-touched:not(form) {
