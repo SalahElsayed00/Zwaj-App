@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using ZwajApp.Api.Models;
 
 namespace ZwajApp.Api.Data
@@ -66,7 +63,7 @@ namespace ZwajApp.Api.Data
 
         public async Task<bool> UserExists(string userName)
         {
-            if(await _context.Users.AnyAsync(u=>u.UserName==userName)) return true;
+            if (await _context.Users.AnyAsync(u => u.UserName == userName)) return true;
             return false;
         }
     }

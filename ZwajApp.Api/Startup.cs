@@ -1,24 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Net;
+using System.Text;
 using ZwajApp.Api.Data;
+using ZwajApp.Api.Data.Repository;
 using ZwajApp.Api.Helpers;
 
 namespace ZwajApp.Api
@@ -39,17 +34,19 @@ namespace ZwajApp.Api
             {
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
-            
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => 
+                { x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; });
+            //services.AddTransient<UserTrialData>();
             services.AddCors();
+            services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IZwajRepository,ZwajRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-             
             .AddJwtBearer(Options =>
             {
                 Options.TokenValidationParameters = new TokenValidationParameters
                 {
-                   
+
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSetting:Token").Value)),
                     ValidateIssuer = false,
@@ -65,9 +62,9 @@ namespace ZwajApp.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env/*, UserTrialData userTrial*/)
         {
-            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -96,6 +93,10 @@ namespace ZwajApp.Api
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            // seeding data
+            //userTrial.dataTrial();
+
             //add middlewarw cores policy
             app.UseCors(c =>
             {

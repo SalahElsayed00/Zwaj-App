@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 using ZwajApp.Api.Data;
 using ZwajApp.Api.DTOs;
 using ZwajApp.Api.Models;
@@ -30,7 +28,7 @@ namespace ZwajApp.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto user)
         {
-               
+
             user.UserName = user.UserName.ToLower();
             if (await _repo.UserExists(user.UserName))
                 return BadRequest("هذا المستخدم مسجل من قبل");
@@ -46,7 +44,7 @@ namespace ZwajApp.Api.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto user)
         {
-            
+
             var userFromRepo = await _repo.Login(user.UserName.ToLower(), user.Password);
             if (userFromRepo == null) return Unauthorized();
 
