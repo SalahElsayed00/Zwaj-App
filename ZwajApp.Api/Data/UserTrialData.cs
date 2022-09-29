@@ -18,7 +18,8 @@ namespace ZwajApp.Api.Data
         {
             var userData = File.ReadAllText("Data/UserFackData.json");
             var users = JsonConvert.DeserializeObject<List<User>>(userData);
-            foreach (var user in users)
+            
+            users.ForEach(user =>
             {
                 byte[] passwordSalt, passwordHash;
                 CreateHashPassword("password", out passwordHash, out passwordSalt);
@@ -26,7 +27,8 @@ namespace ZwajApp.Api.Data
                 user.PasswordSalt = passwordSalt;
                 user.UserName = user.UserName.ToLower();
                 _context.Users.Add(user);
-            }
+            });
+
             _context.SaveChanges();
         }
         public void CreateHashPassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
@@ -36,8 +38,6 @@ namespace ZwajApp.Api.Data
                 passwordSalt = hMac.Key;
                 passwordHash = hMac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
-
         }
-
     }
 }

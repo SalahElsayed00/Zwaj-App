@@ -15,7 +15,8 @@ namespace ZwajApp.Api.Helpers
         public static int CalculateAge(this DateTime dateTime)
         {
             var age = DateTime.Today.Year - dateTime.Year;
-            if (dateTime.AddYears(age) > DateTime.Today) age--;
+            //if (dateTime.AddYears(age) > DateTime.Today) 
+            if (dateTime.Month< DateTime.Today.Month) age--;
             return age;
         }
     }

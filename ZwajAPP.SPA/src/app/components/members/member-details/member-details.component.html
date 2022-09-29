@@ -1,0 +1,65 @@
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <img class="card-img-top img-thumbnial" src="{{user.photoUrl}}" alt="{{user.asKnown}}" />
+                <div class="card-body text-left">
+                    <div class="text-right buttons">
+                        <button class="btn btn-outline-light btn-lg mr-3 "><i class="fa fa-heart"
+                                aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg"><i class="fa fa-commenting-o"
+                                aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div>
+                        <p><strong>الاسم : </strong> {{user.asKnown}}</p>
+                    </div>
+                    <div>
+                        <p><strong>العمر : </strong> {{user.age}}</p>
+                    </div>
+                    <div>
+                        <p><strong> يقيم في : </strong> {{user.country}} | {{user.city}}</p>
+                    </div>
+                    <div>
+                        <p><strong>أخر ظهور : </strong> {{user.lastActive}}</p>
+                    </div>
+                    <div>
+                        <p><strong>مشترك منذ : </strong> {{user.createdDate}}</p>
+                    </div>
+
+                </div>
+                <!-- <div class="card-footer">
+                   
+                </div> -->
+            </div>
+        </div>
+        <div class="col-sm-1  mt-5"></div>
+        <div class="col-sm-7">
+            <div type="pills">
+                <tabset>
+                    <tab heading="انا {{user.asKnown}}" class="mt-5">
+                        <h4>اعرفك بنفسي</h4>
+                        <p>{{user.introduction}}</p>
+                        <h4>ابحث عن </h4>
+                        <p>{{user.lookingFor}}</p>
+                    </tab>
+                    <tab heading="هواياتي" class="mt-5">
+                        <h4>هواياتي</h4>
+                        <p>{{user.interests}}</p>
+                    </tab>
+                    <tab heading="الصور" class="mt-5">
+                        <h4>الصور</h4>
+                        <div class="gallery-wrapper">
+                            <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery">
+                            </ngx-gallery>
+                        </div>
+                    </tab>
+                    <tab heading="الرسائل" class="mt-5">
+                        <h4>الرسائل</h4>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+</div>
