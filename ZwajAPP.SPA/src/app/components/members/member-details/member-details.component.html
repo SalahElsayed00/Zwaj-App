@@ -39,14 +39,38 @@
             <div type="pills">
                 <tabset>
                     <tab heading="انا {{user.asKnown}}" class="mt-5">
-                        <h4>اعرفك بنفسي</h4>
-                        <p>{{user.introduction}}</p>
-                        <h4>ابحث عن </h4>
-                        <p>{{user.lookingFor}}</p>
+                        <div class="card card-tab">
+                            <div class="card-header">
+                                <h4>اعرفك بنفسي</h4>
+                            </div>
+                            <div class="card-body">
+                              <blockquote class="blockquote mb-0">
+                                <p>{{user.introduction}}</p>
+                              </blockquote>
+                            </div>
+                          </div>
+                          <div class="card mt-5 card-tab">
+                            <div class="card-header">
+                                <h4>ابحث عن </h4>
+                            </div>
+                            <div class="card-body">
+                              <blockquote class="blockquote mb-0">
+                                <p>{{user.lookingFor}}</p>
+                              </blockquote>
+                            </div>
+                          </div>
                     </tab>
                     <tab heading="هواياتي" class="mt-5">
-                        <h4>هواياتي</h4>
-                        <p>{{user.interests}}</p>
+                        <div class="card mt-5 card-tab">
+                            <div class="card-header">
+                                <h4>هواياتي</h4>
+                            </div>
+                            <div class="card-body">
+                              <blockquote class="blockquote mb-0">
+                                <p>{{user.interests}}</p>
+                              </blockquote>
+                            </div>
+                        </div>
                     </tab>
                     <tab heading="الصور" class="mt-5">
                         <h4>الصور</h4>

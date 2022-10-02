@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using ZwajApp.Api.Data.Repository;
 using ZwajApp.Api.DTOs;
@@ -18,7 +18,7 @@ namespace ZwajApp.Api.Controllers
         private readonly IZwajRepository _repo;
         private readonly IMapper _mapper;
 
-        public UsersController(IZwajRepository repo,IMapper mapper)
+        public UsersController(IZwajRepository repo, IMapper mapper)
         {
             _repo = repo;
             _mapper = mapper;
@@ -33,11 +33,25 @@ namespace ZwajApp.Api.Controllers
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
-        { 
+        {
             var user = await _repo.GetUser(id);
             if (user == null) return NotFound();
             var returnUser = _mapper.Map<UserDetailsDto>(user);
             return Ok(returnUser);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, UserEditDto userEditDto)
+        {
+            if (id != int.Parse( User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUser(id);
+            _mapper.Map(userEditDto, user);
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"حدثت مشكلة اثناء تعديل البايانات الخاصة بك");
         }
     }
 }

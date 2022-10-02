@@ -1,6 +1,4 @@
-import { MemberDetailsResolver } from './resolver/member-details.resolver';
-import { UserService } from './services/user.service';
-import { AuthGuard } from './guards/auth.guard';
+import { PreventsUnsavedChangesGuard } from './guards/prevents-unsaved-changes.guard';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,14 +23,18 @@ import { AuthService } from './services/Auth.service';
 import { AlertifyService } from './services/alertify.service';
 import { MemberCardComponent } from './components/members/member-card/member-card.component';
 import { MemberDetailsComponent } from './components/members/member-details/member-details.component';
-
+import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
+import { MemberEditResolver } from './resolver/member-edit.resolver';
+import { MemberDetailsResolver } from './resolver/member-details.resolver';
+import { UserService } from './services/user.service';
+import { AuthGuard } from './guards/auth.guard';
 
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent,MemberListComponent,MessagesComponent,LikeListsComponent, MemberCardComponent, MemberDetailsComponent],
+  declarations: [AppComponent, NavComponent, HomeComponent, RegisterComponent,MemberListComponent,MessagesComponent,LikeListsComponent, MemberCardComponent, MemberDetailsComponent,MemberEditComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,9 +58,11 @@ export function tokenGetter() {
     ErrorInterceptorProvidor,
     AlertifyService,
     AuthGuard,
+    PreventsUnsavedChangesGuard,
     UserService,
     MemberDetailsResolver,
-  
+    MemberEditResolver,
+    
   ],
   bootstrap: [AppComponent],
 })

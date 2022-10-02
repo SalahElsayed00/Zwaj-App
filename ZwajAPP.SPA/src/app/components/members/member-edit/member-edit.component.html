@@ -1,0 +1,111 @@
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <div>
+                <h2>ملفك الشخصي /</h2>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div *ngIf="memberEditFrom.dirty" class="alert alert-info">
+                <p>قم بحفظ التعديلات التي اجريتها على ملفك الشخصي </p>
+            </div>
+        </div>
+        <div class="col-sm-4 mt-5">
+            <div class="card">
+                <img class="card-img-top img-thumbnial" src="{{user.photoUrl}}" alt="{{user.asKnown}}" />
+                <div class="card-body text-left">
+                    <div class="text-right buttons">
+                        <button form="Editfrom" [disabled]="!memberEditFrom.dirty" type="submit"
+                            class="btn btn-outline-success btn-lg">
+                            حفظ التعديلات
+                        </button>
+                    </div>
+                    <div>
+                        <p><strong>الاسم : </strong> {{user.asKnown}}</p>
+                    </div>
+                    <div>
+                        <p><strong>العمر : </strong> {{user.age}}</p>
+                    </div>
+                    <div>
+                        <p><strong> يقيم في : </strong> {{user.country}} | {{user.city}}</p>
+                    </div>
+                    <div>
+                        <p><strong>أخر ظهور : </strong> {{user.lastActive}}</p>
+                    </div>
+                    <div>
+                        <p><strong>مشترك منذ : </strong> {{user.createdDate}}</p>
+                    </div>
+
+                </div>
+                <!-- <div class="card-footer">
+                   
+                </div> -->
+            </div>
+        </div>
+        <div class="col-sm-1  mt-5"></div>
+        <div class="col-sm-7 mt-5">
+            <div type="pills">
+                <tabset>
+                    <tab heading="بياناتي" class="mt-5">
+                        <form #memberEditFrom="ngForm" id="Editfrom" (ngSubmit)="updateUser()">
+                            <div class="card card-tab">
+                                <div class="card-header">
+                                    <h4>اعرفك بنفسي</h4>
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <label></label>
+                                        <textarea name="introduction" rows="4"
+                                            [(ngModel)]="user.introduction"></textarea>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card mt-5 card-tab">
+                                <div class="card-header">
+                                    <h4>ابحث عن </h4>
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <label></label>
+                                        <textarea name="lookingFor" rows="4" [(ngModel)]="user.lookingFor"></textarea>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card mt-5 card-tab">
+                                <div class="card-header">
+                                    <h4>هواياتي</h4>
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <label></label>
+                                        <textarea name="interests" rows="4" [(ngModel)]="user.interests"></textarea>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card mt-5 card-tab">
+                                <div class="card-header">
+                                    <h4>مكان الاقامة</h4>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="form-inline">
+                                        <label for="country" class="mr-2">الدولة</label>
+                                        <input type="text" name="country" [(ngModel)]="user.country" class="mr-5">
+                                        <label for="country" class="mr-2">المدينة</label>
+                                        <input type="text" name="city" [(ngModel)]="user.city">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </tab>
+                    <tab heading="الصور" class="mt-5">
+                        <h4>الصور</h4>
+                        <!-- <div class="gallery-wrapper">
+                            <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery">
+                            </ngx-gallery>
+                        </div> -->
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+</div>

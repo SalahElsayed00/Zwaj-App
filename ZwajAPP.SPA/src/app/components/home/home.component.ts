@@ -1,4 +1,6 @@
+import { AuthService } from 'src/app/services/Auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 registerMode:boolean=false;
-  constructor() { }
+  constructor(private authservice:AuthService,private route:Router) { }
 
   ngOnInit() {
+    if (this.authservice.loggedIn()) {
+      this.route.navigate(['/members']);
+    }
   }
   registerToggle(){
     this.registerMode=!this.registerMode;

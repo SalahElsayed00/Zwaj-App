@@ -18,6 +18,7 @@ export class AuthService {
       map((response: any) => {
         if (response) {
           localStorage.setItem('token', response.token);
+          this.decodeToken=this.helper.decodeToken(response.token);
         }
       })
     );

@@ -32,3 +32,19 @@ h4,strong{
     height: 400px;
     border-color: #1a4594;
 }
+
+textarea{
+    width: 100%;
+    padding: 20px;
+}
+
+.alert{
+    background-color:#375a7f;
+    padding-top: 30px;
+}
+h2{
+    padding-top: 20px;
+}
+form-inline{
+    margin-right: 145px;
+}

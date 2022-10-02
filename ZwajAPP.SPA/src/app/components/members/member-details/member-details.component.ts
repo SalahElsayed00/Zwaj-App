@@ -26,7 +26,7 @@ export class MemberDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   // this.loadUser();
+    // this.loadUser();
     this.route.data.subscribe({
       next: (data) => {
         this.user = data['user'];
